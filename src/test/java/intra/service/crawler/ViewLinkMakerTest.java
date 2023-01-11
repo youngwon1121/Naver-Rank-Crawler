@@ -1,4 +1,4 @@
-package intra.service.parser;
+package intra.service.crawler;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

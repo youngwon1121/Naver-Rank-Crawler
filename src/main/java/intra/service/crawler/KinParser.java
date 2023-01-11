@@ -1,11 +1,10 @@
-package intra.service.parser;
+package intra.service.crawler;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.net.URL;
 import java.util.HashMap;
 
 public class KinParser implements Parser {

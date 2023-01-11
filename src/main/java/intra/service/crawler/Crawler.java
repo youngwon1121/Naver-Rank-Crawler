@@ -1,8 +1,9 @@
-package intra.service.parser;
+package intra.service.crawler;
 
 import java.io.IOException;
+import java.util.concurrent.Callable;
 
-public abstract class Crawler implements Runnable {
+public abstract class Crawler{
     private String keyword;
     private String targetURI;
 
@@ -38,8 +39,4 @@ public abstract class Crawler implements Runnable {
         return rank;
     }
 
-    @Override
-    public void run() {
-        this.start();
-    }
 }

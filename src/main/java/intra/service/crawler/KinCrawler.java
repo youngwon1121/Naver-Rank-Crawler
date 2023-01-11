@@ -1,4 +1,4 @@
-package intra.service.parser;
+package intra.service.crawler;
 
 public class KinCrawler extends Crawler {
     public KinCrawler(String keyword, String targetURI) {

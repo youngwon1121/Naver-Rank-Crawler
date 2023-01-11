@@ -1,4 +1,4 @@
-package intra.service.parser;
+package intra.service.crawler;
 
 public class KinLinkMaker implements LinkMaker {
 

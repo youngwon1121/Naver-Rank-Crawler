@@ -1,4 +1,4 @@
-package intra.service.parser;
+package intra.service.crawler;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

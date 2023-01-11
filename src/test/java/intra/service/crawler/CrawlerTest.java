@@ -1,4 +1,4 @@
-package intra.service.parser;
+package intra.service.crawler;
 
 class CrawlerTest {
     Http http = new Http();

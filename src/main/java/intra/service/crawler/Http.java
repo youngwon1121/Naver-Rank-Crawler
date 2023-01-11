@@ -1,4 +1,4 @@
-package intra.service.parser;
+package intra.service.crawler;
 
 import java.io.IOException;
 import java.net.URI;

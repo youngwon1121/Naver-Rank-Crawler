@@ -1,9 +1,8 @@
-package intra.service.parser;
+package intra.service.crawler;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Optional;
 
 public interface Parser {
     public int parse(String html, String targetURI);

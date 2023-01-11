@@ -1,4 +1,4 @@
-package intra.service.parser;
+package intra.service.crawler;
 
 public class ViewLinkMaker implements LinkMaker{
     public String[] get(String keyword) {

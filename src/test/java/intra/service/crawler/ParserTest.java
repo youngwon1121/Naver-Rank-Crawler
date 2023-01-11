@@ -1,11 +1,9 @@
-package intra.service.parser;
+package intra.service.crawler;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ParserTest {
     @Test
