@@ -3,6 +3,7 @@ package intra.service.parser;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Optional;
 
 public interface Parser {
     public int parse(String html, String targetURI);
@@ -12,6 +13,8 @@ public interface Parser {
          try {
              URL url = new URL(uri);
              String query = url.getQuery();
+             if (query == null) return null;
+
              String[] params = query.split("&");
              for (String param : params) {
                  String[] p = param.split("=");
