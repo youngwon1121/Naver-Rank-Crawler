@@ -22,6 +22,7 @@ public class Target {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String keyword;
+    @Column(length = 1000)
     private String uri;
     @Enumerated(value = EnumType.STRING)
     private Type type;
