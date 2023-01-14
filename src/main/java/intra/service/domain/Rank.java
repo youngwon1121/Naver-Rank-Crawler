@@ -1,11 +1,13 @@
 package intra.service.domain;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
+@Getter
 public class Rank {
     public Rank(Target target, int rank) {
         this.target = target;
