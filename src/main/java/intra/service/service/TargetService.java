@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -16,7 +17,8 @@ public class TargetService {
         this.targetRepository = targetRepository;
     }
 
-    public void saveTarget(Target target){
+    public Long saveTarget(Target target){
         targetRepository.save(target);
+        return target.getId();
     }
 }
