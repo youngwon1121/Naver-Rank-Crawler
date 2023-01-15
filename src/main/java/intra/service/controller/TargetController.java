@@ -1,5 +1,6 @@
 package intra.service.controller;
 
+import intra.service.DTO.Response;
 import intra.service.DTO.TargetDTO;
 import intra.service.DTO.TargetDetailDTO;
 import intra.service.DTO.TargetRequestDTO;
@@ -8,10 +9,10 @@ import intra.service.domain.Target;
 import intra.service.repository.TargetRepository;
 import intra.service.service.TargetService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import javax.validation.Valid;
 
 import java.util.List;
 
@@ -22,20 +23,38 @@ public class TargetController {
     private final TargetService targetService;
     private final CrawlerService crawlerService;
     @GetMapping("/api/targets")
-    public List<TargetDTO> getTargetsAll() {
-        return targetRepository.findAllWithLatestRank();
+    public ResponseEntity<Response<List<TargetDTO>>> getTargetsAll() {
+        List<TargetDTO> allWithLatestRank = targetRepository.findAllWithLatestRank();
+
+        return Response.<List<TargetDTO>>builder()
+                .data(allWithLatestRank)
+                .status(HttpStatus.OK)
+                .build()
+                .toResponse();
     }
 
     @GetMapping("/api/targets/{id}")
-    public ResponseEntity<TargetDetailDTO> getTarget(@PathVariable("id") Long id) {
+    public ResponseEntity<Response<TargetDetailDTO>> getTarget(@PathVariable("id") Long id) {
         Target target = targetRepository.findOne(id);
-        return ResponseEntity.ok(new TargetDetailDTO(target));
+        TargetDetailDTO targetDetailDTO = new TargetDetailDTO(target);
+
+        return Response.<TargetDetailDTO>builder()
+                .data(targetDetailDTO)
+                .status(HttpStatus.OK)
+                .build()
+                .toResponse();
     }
 
     @PostMapping("/api/targets/")
-    public Long saveTarget(@RequestBody @Validated TargetRequestDTO targetRequestDTO) {
-        Target target = targetRequestDTO.toEntity();
-        return targetService.saveTarget(target);
+    public ResponseEntity<Response<TargetDetailDTO>> saveTarget(@RequestBody @Validated TargetRequestDTO targetRequestDTO) {
+        Long id = targetService.saveTarget(targetRequestDTO.toEntity());
+        Target target = targetRepository.findOne(id);
+        TargetDetailDTO targetDetailDTO = new TargetDetailDTO(target);
+        return Response.<TargetDetailDTO>builder()
+                .data(targetDetailDTO)
+                .status(HttpStatus.CREATED)
+                .build()
+                .toResponse();
     }
 
     @PostMapping("/api/targets/{id}/rank")
