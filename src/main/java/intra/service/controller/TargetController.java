@@ -58,8 +58,24 @@ public class TargetController {
     }
 
     @PostMapping("/api/targets/{id}/rank")
-    public void getRank(@PathVariable Long id) {
+    public ResponseEntity<Response<Object>> getRank(@PathVariable Long id) {
         Target target = targetRepository.findOne(id);
         crawlerService.getRankAndSave(target);
+
+        return Response.builder()
+                .status(HttpStatus.CREATED)
+                .build()
+                .toResponse();
+    }
+
+    @PostMapping("/api/targets/rank")
+    public ResponseEntity<Response<Object>> getRankBatch() {
+        List<Target> targets = targetRepository.findAll();
+        crawlerService.getRankAndSaveBatch(targets);
+
+        return Response.builder()
+                .status(HttpStatus.CREATED)
+                .build()
+                .toResponse();
     }
 }
