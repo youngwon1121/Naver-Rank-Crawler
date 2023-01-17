@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.persistence.EntityManager;
@@ -35,7 +34,7 @@ class TargetRepositoryTest {
         targetRepository.save(target);
 
         //then
-        Assertions.assertThat(target).isSameAs(targetRepository.findOne(1L));
+        Assertions.assertThat(target).isSameAs(targetRepository.findOne(target.getId()));
     }
 
     @Test
