@@ -30,7 +30,7 @@
 
 swapper는 memory에 공간이 부족할 경우 데이터를 디스크로 swap-out 시켜주는 역할을합니다.
 
-process의 생성이 많아져 PCB의 갯수또한 늘어나 메모리를 많이 차지할테니 call이 많을수밖에 없습니다.
+process의 생성이 많아져 메모리를 많이 차지할테니 call이 많을수밖에 없습니다.
 
 ![multiprocess](https://user-images.githubusercontent.com/30296115/212557703-cbe069c5-5f0f-4ecb-83cd-5bc82ec62e1b.png)
 
